@@ -14,9 +14,9 @@ data = [[row[0][1:], row[1][1:]] for row in data]
 data = [[float(row[0]), float(row[1])] for row in data]
 
 # plot data as scatter plot with cross markers in red
-plt.scatter([row[0] for row in data], [row[1] for row in data], marker='x', color='red')
+plt.scatter([row[0] for row in data], [row[1] for row in data], marker='x')
 plt.xlabel(r'd in $[cm]$')
 plt.ylabel(r'N in $[\frac{1}{60s}]$')
-plt.savefig('plot_1.pdf')
+plt.savefig('plot_1.svg')
 plt.yscale('log')
-plt.savefig('plot_2.pdf')
+plt.savefig('plot_2.svg')
