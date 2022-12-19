@@ -109,6 +109,15 @@ e_eck_ein = ((m_e*g)/(2*k_eck_ein*I_q))
 e_rund_bei = ((m_b*g)/(48*k_rund_bei*I_r))
 e_eck_bei = ((m_b*g)/(48*k_eck_bei*I_q))
 
+e_lit = 70 * 10**9
+
+#print ks
+print('k_rund_ein =', k_rund_ein)
+print('k_eck_ein =', k_eck_ein)
+print('k_rund_bei =', k_rund_bei)
+print('k_eck_bei =', k_eck_bei)
+
+
 #print I
 print('I_r =', I_r)
 print('I_q =', I_q)
@@ -120,10 +129,16 @@ print('e_eck_ein =', e_eck_ein)
 print('e_rund_bei =', e_rund_bei)
 print('e_eck_bei =', e_eck_bei)
 
-# sum of e_eck_bei and e_rund_bei and e_eck_ein and e_rund_ein
-e_sum = (e_eck_bei + e_rund_bei + e_eck_ein + e_rund_ein)/4
-print('e_sum =', e_sum)
-print('e_sum =', e_sum.n)
+
+#relative error
+print('relative error e_rund_ein =', ((e_rund_ein-e_lit)/e_lit))
+print('relative error e_eck_ein =', ((e_eck_ein-e_lit)/e_lit))
+print('relative error e_rund_bei =', ((e_rund_bei-e_lit)/e_lit))
+print('relative error e_eck_bei =', ((e_eck_bei-e_lit)/e_lit))
+
+
+
+
 
 
 
