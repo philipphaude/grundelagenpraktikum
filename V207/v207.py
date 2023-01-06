@@ -48,6 +48,9 @@ for i in range(0, 10):
 dataKleineAve = dataKleineAve / 10
 dataGroßAve = dataGroßAve / 10
 
+eta_t_l = 0.9321
+eta_h_l = 0.5465
+
 m_kl = ufloat(4.45, 0.01)
 m_kl = m_kl * 10 ** -3
 
@@ -90,8 +93,12 @@ dataTemp = [[1 / x[0], K_gr * (p_gr - p_Wasser) * x[1], K_gr * (p_gr - p_Wasser)
 
 dataTemp = [[x[0], (x[1]+x[2]+x[3]+x[4])/4 ] for x in dataTemp]
 
+eta_t = dataTemp[0][1]
+eta_h = dataTemp[-1][1]
 
-
+#relative error of eta_t and eta_t_l
+eta_t_err = (eta_t - eta_t_l) / eta_t_l
+eta_h_err = (eta_h - eta_h_l) / eta_h_l
 
 # plot dots dataTemp without error bars with nominal values
 plt.plot([x[0] for x in dataTemp], [np.log(x[1].nominal_value) for x in dataTemp], 'o', label=r'Messdaten')
@@ -136,5 +143,10 @@ latex('A', A.n, A.s, 'Pas', -3, 3)
 latex('B', B.n, B.s, 'kelvin', 0, 3)
 latex('Reynoldszahl tief', Re_t.n, Re_t.s, '', 0, 3)
 latex('Reynoldszahl hoch', Re_h.n, Re_h.s, '', 0, 3)
+latex('Viskosität tief', eta_t.n, eta_t.s, 'Pas', 0, 3)
+latex('Viskosität hoch', eta_h.n, eta_h.s, 'Pas', 0, 3)
+latex('relative Abweichung tief', eta_t_err.n, eta_t_err.s, '', 0, 3)
+latex('relative Abweichung hoch', eta_h_err.n, eta_h_err.s, '', 0, 3)
+
 
 print(dataTemp)
