@@ -10,6 +10,16 @@ def latex(w_name, w, w_err, w_unit, magnitude, digits):
     print(w_name, '&=', '\SI{', round(w / (10 ** magnitude), digits), '(', round(w_err / (10 ** magnitude), digits),
           ')e', magnitude, '}{', w_unit, '}')
 
+LR_10 = 239
+LR_11 = 489.9
+LC_15 = 652
+LR_15 = 473
+LC_1 = 660
+LC_3 = 420
+LR_17i = 93.65
+LL_17i = 41.85
+LR_17m = 93.65
+LL_17m = 41.85
 
 # read data
 with open('dataAW10.csv', newline='') as csvfile:
@@ -58,7 +68,9 @@ def wheat(data):
 
 
 latex('R_{10}', wheat(dataAW10).n, wheat(dataAW10).s, '\ohm', 0, 2)
+R_10 = wheat(dataAW10)
 latex('R_{11}', wheat(dataAW11).n, wheat(dataAW11).s, '\ohm', 0, 2)
+R_11 = wheat(dataAW11)
 
 
 def kapa1(data):
@@ -80,10 +92,14 @@ def kapa2(data):
 
 
 latex('C_{15}', kapa1(dataBW15).n, kapa1(dataBW15).s, '\ nano\F', 0, 2)
+C_15 = kapa1(dataBW15)
 latex('R_{15}', kapa2(dataBW15).n, kapa2(dataBW15).s, '\ohm', 0, 2)
+R_15 = kapa2(dataBW15)
 
 latex('C_{1}', kapa1(dataBW1).n, kapa1(dataBW1).s, '\ nano\F', 0, 2)
+C_1 = kapa1(dataBW1)
 latex('C_{3}', kapa1(dataBW3).n, kapa1(dataBW3).s, '\ nano\F', 0, 2)
+C_3 = kapa1(dataBW3)
 
 
 def indu(data):
@@ -96,7 +112,9 @@ def indu(data):
 
 
 latex('L_{17}', indu(dataCW17).n, indu(dataCW17).s, '\milli\H', 0, 2)
+L_17i = indu(dataCW17)
 latex('R_{17}', kapa2(dataCW17).n, kapa2(dataCW17).s, '\ohm', 0, 2)
+R_17i = kapa2(dataCW17)
 
 
 def max1(data):
@@ -117,7 +135,9 @@ def max2(data):
 
 
 latex('Max R_{17}', max1(dataDW17).n, max1(dataDW17).s, '\ohm', 0, 2)
+R_17m = max1(dataDW17)
 latex('Max L_{17}', max2(dataDW17).n * 1000, max2(dataDW17).s * 1000, '\milli\H', 0, 2)
+L_17m = max2(dataDW17) * 1000
 
 R = 1000
 C = 660 * 10 ** -9
@@ -130,12 +150,50 @@ for i in range(0, 32):
 
 def wienRobinson(x):
     return np.sqrt(1 / 9 * ((x ** 2 - 1) ** 2) / ((1 - x ** 2) ** 2 + 9 * x ** 2))
-    #return ((x ** 2 * R ** 2 * C ** 2 - 1) ** 2) / 9 * ((1 - x ** 2 * R ** 2 * C ** 2) ** 2 + 9 * x ** 2 * R ** 2 * C ** 2)
 
-# plot dataE
+x = [dataE[i][0] for i in range(0, 32)]
+p= (np.linspace(x[0],x[-1],10000))
+
 plt.plot([np.log(x[0]) for x in dataE], [x[1] for x in dataE], 'o', label=r'Messdaten')
-plt.plot([np.log(x[0]) for x in dataE], [wienRobinson(x[0]) for x in dataE], label=r'Wien-Robinson')
-#plt.xlim(-2.5, 5)
-#plt.ylim(-0.01, 0.26)
+plt.plot(np.log(p), wienRobinson(p), label=r'Theoriekurve')
+plt.legend(loc='lower right')
+plt.xlabel(r'$\ln(\frac{\omega}{\omega_0})$')
+plt.ylabel(r'$\frac{U_{br}}{U_{s}}$')
 plt.savefig('plotE.pdf')
 print(dataE)
+
+LR_10 = 239
+LR_11 = 489.9
+LC_15 = 652
+LR_15 = 473
+LC_1 = 660
+LC_3 = 420
+LR_17i = 93.65
+LL_17i = 41.85
+LR_17m = 93.65
+LL_17m = 41.85
+
+AR_10 = abs(((R_10 - LR_10)/LR_10)*100)
+AR_11 = abs(((R_11 - LR_11)/LR_11)*100)
+AC_15 = abs(((C_15 - LC_15)/LC_15)*100)
+AR_15 = abs(((R_15 - LR_15)/LR_15)*100)
+AC_1 = abs(((C_1 - LC_1)/LC_1)*100)
+AC_3 = abs(((C_3 - LC_3)/LC_3)*100)
+AR_17i = abs(((R_17i - LR_17i)/LR_17i)*100)
+AL_17i = abs(((L_17i - LL_17i)/LL_17i)*100)
+AR_17m = abs(((R_17m - LR_17m)/LR_17m)*100)
+AL_17m = abs(((L_17m - LL_17m)/LL_17m)*100)
+
+print(R_17m)
+print(LR_17m)
+
+latex('AR_{10}', AR_10.n, AR_10.s, '\%', 0, 2)
+latex('AR_{11}', AR_11.n, AR_11.s, '\%', 0, 2)
+latex('AC_{15}', AC_15.n, AC_15.s, '\%', 0, 2)
+latex('AR_{15}', AR_15.n, AR_15.s, '\%', 0, 2)
+latex('AC_{1}', AC_1.n, AC_1.s, '\%', 0, 2)
+latex('AC_{3}', AC_3.n, AC_3.s, '\%', 0, 2)
+latex('AR_{17i}', AR_17i.n, AR_17i.s, '\%', 0, 2)
+latex('AL_{17i}', AL_17i.n, AL_17i.s, '\%', 0, 2)
+latex('AR_{17m}', AR_17m.n, AR_17m.s, '\%', 0, 2)
+latex('AL_{17m}', AL_17m.n, AL_17m.s, '\%', 0, 2)
