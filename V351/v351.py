@@ -50,7 +50,7 @@ plt.xlim(0, 2 * np.pi)
 plt.legend()
 plt.xlabel(r'$x$')
 plt.ylabel(r'$f(x)$')
-plt.savefig('sägezahn.pdf')
+plt.savefig('plots/sägezahn.pdf')
 plt.clf()
 
 # plot rechtF
@@ -62,7 +62,7 @@ plt.xlim(0, 2 * np.pi)
 plt.legend()
 plt.xlabel(r'$x$')
 plt.ylabel(r'$f(x)$')
-plt.savefig('rechteck.pdf')
+plt.savefig('plots/rechteck.pdf')
 plt.clf()
 
 # plot dreiF
@@ -75,7 +75,7 @@ plt.xlim(-2 * np.pi, 2 * np.pi)
 plt.legend()
 plt.xlabel(r'$x$')
 plt.ylabel(r'$f(x)$')
-plt.savefig('dreiecks.pdf')
+plt.savefig('plots/dreiecks.pdf')
 plt.clf()
 
 
@@ -123,7 +123,7 @@ plt.ylabel(r'$U \:/\: \si{\volt}$')
 plt.xlim(-5, 140)
 plt.ylim(-0.2, 2.5)
 plt.legend(loc='best')
-plt.savefig('dreieckA.pdf')
+plt.savefig('plots/dreieckA.pdf')
 plt.clf()
 
 # plot data rechteck
@@ -146,7 +146,7 @@ plt.ylabel(r'$U \:/\: \si{\volt}$')
 plt.ylim(0, 4)
 plt.xlim(0, 200)
 plt.legend(loc='best')
-plt.savefig('rechteckA.pdf')
+plt.savefig('plots/rechteckA.pdf')
 plt.clf()
 
 # plot data saegezahn
@@ -169,5 +169,5 @@ plt.ylabel(r'$U \:/\: \si{\volt}$')
 plt.ylim(0, 2)
 plt.xlim(0, 100)
 plt.legend(loc='best')
-plt.savefig('saegezahnA.pdf')
+plt.savefig('plots/saegezahnA.pdf')
 plt.clf()

@@ -49,7 +49,7 @@ print(result.intercept, result.intercept_stderr)
 
 
 
-plt.savefig('plot_1.png', dpi=1920/8)
+plt.savefig('../plots/plot_1.png', dpi=1920/8)
 plt.show()
 
 

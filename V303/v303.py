@@ -70,7 +70,7 @@ print('b_err =', np.sqrt(pcov[2][2]))
 plt.xlabel(r'$\phi$ / rad')
 plt.ylabel(r'$U$ / mV')
 plt.legend(loc='best')
-plt.savefig('plotWithoutNoise.pdf')
+plt.savefig('plots/plotWithoutNoise.pdf')
 plt.clf()
 
 # plot dataWithNoise
@@ -103,7 +103,7 @@ print('b_err =', np.sqrt(pcov[2][2]))
 plt.xlabel(r'$\phi$ / rad')
 plt.ylabel(r'$U$ / mV')
 plt.legend(loc='best')
-plt.savefig('plotWithNoise.pdf')
+plt.savefig('plots/plotWithNoise.pdf')
 plt.clf()
 
 def distance(r, a, b):
@@ -136,7 +136,7 @@ plt.ylim(0, 10000)
 plt.xlabel(r'$r$ / cm')
 plt.ylabel(r'$U$ / mV')
 plt.legend(loc='best')
-plt.savefig('plotLedGemogelt.pdf')
+plt.savefig('plots/plotLedGemogelt.pdf')
 plt.clf()
 
 # plot dataLed
@@ -166,5 +166,5 @@ plt.ylim(0, 10000)
 plt.xlabel(r'$r$ / cm')
 plt.ylabel(r'$U$ / mV')
 plt.legend(loc='best')
-plt.savefig('plotLed.pdf')
+plt.savefig('plots/plotLed.pdf')
 plt.clf()

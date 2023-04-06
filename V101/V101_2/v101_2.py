@@ -48,7 +48,7 @@ print(result.intercept, result.intercept_stderr)
 plt.legend(['Messwerte', 'Ausgleichsgerade'])
 
 
-plt.savefig('plot_2.png', dpi=1920/8)
+plt.savefig('../plots/plot_2.png', dpi=1920/8)
 
 
 

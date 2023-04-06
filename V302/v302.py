@@ -159,7 +159,7 @@ plt.plot(np.log(p), wienRobinson(p), label=r'Theoriekurve')
 plt.legend(loc='lower right')
 plt.xlabel(r'$\ln(\frac{\omega}{\omega_0})$')
 plt.ylabel(r'$\frac{U_{br}}{U_{s}}$')
-plt.savefig('plotE.pdf')
+plt.savefig('plots/plotE.pdf')
 print(dataE)
 
 LR_10 = 239

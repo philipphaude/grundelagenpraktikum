@@ -139,7 +139,7 @@ plt.legend(loc='best')
 
 
 #save plot
-plt.savefig('plotTemp.pdf')
+plt.savefig('plots/plotTemp.pdf')
 
 m = ufloat(slope, std_err)
 n = ufloat(intercept, result.intercept_stderr)

@@ -48,7 +48,7 @@ plt.ylim(0, 0.00045)
 plt.xlabel(r'$\left(Lx^2-\frac{x^3}{3}\right)$ in $\si{\m^3}$')
 plt.ylabel(r'$D(x)$ in $\si{\meter}$')
 plt.legend([r'Messwerte', r'Lineare Regression'], loc='upper left')
-plt.savefig('plot_rund_ein.png', dpi=1920/8)
+plt.savefig('plots/plot_rund_ein.png', dpi=1920/8)
 
 k_rund_ein = ufloat(slope, std_err)
 
@@ -62,7 +62,7 @@ plt.ylim(0, 0.00045)
 plt.xlabel(r'$\left(Lx^2-\frac{x^3}{3}\right)$ in $\si{\m^3}$')
 plt.ylabel(r'$D(x)$ in $\si{\meter}$')
 plt.legend([r'Messwerte', r'Lineare Regression'], loc='upper left')
-plt.savefig('plot_eck_ein.png', dpi=1920/8)
+plt.savefig('plots/plot_eck_ein.png', dpi=1920/8)
 
 k_eck_ein = ufloat(slope, std_err)
 
@@ -76,7 +76,7 @@ plt.ylim(0, 0.00005)
 plt.xlabel(r'$3 L^2 x-4 x^3$ in $\si{\m^3}$ für $0 \leq x \leq \frac{L}{2}$ und $4 x^3-12 L x^2+9 L^2 x-L^3$ in $\si{\m^3}$ für $\frac{L}{2} \leq x \leq L$')
 plt.ylabel(r'$D(x)$ in $\si{\meter}$')
 plt.legend([r'Messwerte', r'Lineare Regression'], loc='upper left')
-plt.savefig('plot_rund_bei.png', dpi=1920/8)
+plt.savefig('plots/plot_rund_bei.png', dpi=1920/8)
 
 k_rund_bei = ufloat(slope, std_err)
 
@@ -90,7 +90,7 @@ plt.ylim(0, 0.00003)
 plt.xlabel(r'$3 L^2 x-4 x^3$ in $\si{\m^3}$ für $0 \leq x \leq \frac{L}{2}$ und $4 x^3-12 L x^2+9 L^2 x-L^3$ in $\si{\m^3}$ für $\frac{L}{2} \leq x \leq L$')
 plt.ylabel(r'$D(x)$ in $\si{\meter}$')
 plt.legend([r'Messwerte', r'Lineare Regression'], loc='upper left')
-plt.savefig('plot_eck_bei.png', dpi=1920/8)
+plt.savefig('plots/plot_eck_bei.png', dpi=1920/8)
 
 k_eck_bei = ufloat(slope, std_err)
 

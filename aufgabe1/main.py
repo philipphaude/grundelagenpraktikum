@@ -17,7 +17,7 @@ data = [[float(row[0]), float(row[1])] for row in data]
 plt.scatter([row[0] for row in data], [row[1] for row in data], marker='x')
 plt.xlabel(r'd in $[cm]$')
 plt.ylabel(r'N in $[\frac{1}{60s}]$')
-plt.savefig('plot_1.png', dpi=1920/8)
+plt.savefig('plots/plot_1.png', dpi=1920/8)
 plt.yscale('log')
 # save plot as png 1080p
-plt.savefig('plot_2.png', dpi=1920/8)
+plt.savefig('plots/plot_2.png', dpi=1920/8)
