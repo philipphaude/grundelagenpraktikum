@@ -36,6 +36,20 @@ dataTemp = [[float(x) for x in row] for row in dataTemp]
 # convert to the correct units (Celsius to Kelvin)
 dataTemp = [[x[0] + 273.15, x[1], x[2], x[3], x[4]] for x in dataTemp]
 
+# average of dataKleine
+kA = np.mean([x[0] for x in dataKleine])
+kA_err = np.std([x[0] for x in dataKleine]) / np.sqrt(len(dataKleine))
+kA = ufloat(kA, kA_err)
+
+gA = np.mean([x[0] for x in dataGroß])
+gA_err = np.std([x[0] for x in dataGroß]) / np.sqrt(len(dataGroß))
+gA = ufloat(gA, gA_err)
+
+
+print('kA =', kA.n)
+print('gA =', gA.n)
+print('kA_err =', kA.s)
+print('gA_err =', gA.s)
 
 
 dataKleineAve = 0
@@ -47,6 +61,9 @@ for i in range(0, 10):
 
 dataKleineAve = dataKleineAve / 10
 dataGroßAve = dataGroßAve / 10
+
+print('dataKleineAve =', dataKleineAve)
+print('dataGroßAve =', dataGroßAve)
 
 eta_t_l = 0.9321
 eta_h_l = 0.5465
