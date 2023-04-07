@@ -188,10 +188,10 @@ latex('U_g Violett', U_Violet.n, U_Violet.s, '\V\s', 0, 3)
 plt.clf()
 
 #define frequencies
-f_Yellow = sp.constants.c/(579 * 10**(-9))
-f_Green = sp.constants.c/(546 * 10**(-9))
-f_Red = sp.constants.c/(623.44 * 10**(-9))
-f_Violet = sp.constants.c/(435 * 10**(-9))
+f_Yellow = sp.constants.c/(579.1 * 10**(-9))
+f_Green = sp.constants.c/(546.1 * 10**(-9))
+f_Red = sp.constants.c/(623.4 * 10**(-9))
+f_Violet = sp.constants.c/(435.8 * 10**(-9))
 
 #print frequencies in THz
 print('f Yellow: ', f_Yellow * 10**(-12), 'THz')
@@ -205,11 +205,50 @@ plt.plot([f_Yellow, f_Green, f_Red, f_Violet], [-U_Yellow.n, -U_Green.n, -U_Red.
 #do a linear regression on frequencies and U_g
 slope, intercept, r_value, p_value, std_err = sp.stats.linregress([f_Yellow, f_Green, f_Red, f_Violet], [-U_Yellow.n, -U_Green.n, -U_Red.n,  -U_Violet.n])
 result = sp.stats.linregress([f_Yellow, f_Green, f_Red, f_Violet], [-U_Yellow.n, -U_Green.n, -U_Red.n, -U_Violet.n])
-xx = np.linspace(4.5 * 10**14, 7 * 10**14, 100)
+xx = np.linspace(450 * 10**12, 700 * 10**12, 100)
 plt.plot(xx, intercept + slope * xx, color='black', label=r'lineare Regression')
 
 #output slope and intercept
-print('slope: ', slope, 'intercept: ', intercept)
+latex('m Freq', slope, std_err, r'\tera\Hz', -15, 3)
+latex('n Freq', intercept, result.intercept_stderr, '\V', 0, 3)
 
+#format plot
+plt.xlabel(r'$f$ / THz')
+plt.ylabel(r'$U_g$ / V')
+plt.xlim(450 * 10**12, 700 * 10**12)
+plt.ylim(0.2, 1.2)
+plt.legend(loc = 'upper left')
+
+#change xticks to 10**12
+plt.xticks([450 * 10**12, 500 * 10**12, 550 * 10**12, 600 * 10**12, 650 * 10**12, 700 * 10**12], ['450', '500', '550', '600', '650', '700'])
+
+#save plot
 plt.savefig('plots/frequencies.pdf')
 
+plt.clf()
+
+#plot frequencies against U_g without red data point
+plt.plot([f_Yellow, f_Green, f_Violet], [-U_Yellow.n, -U_Green.n, -U_Violet.n], 'x', label='Messdaten', color ='black')
+
+#do a linear regression on frequencies and U_g withot the red data point
+slope, intercept, r_value, p_value, std_err = sp.stats.linregress([f_Yellow, f_Green, f_Violet], [-U_Yellow.n, -U_Green.n,  -U_Violet.n])
+result = sp.stats.linregress([f_Yellow, f_Green, f_Violet], [-U_Yellow.n, -U_Green.n, -U_Violet.n])
+xx = np.linspace(450 * 10**12, 700 * 10**12, 100)
+plt.plot(xx, intercept + slope * xx, color='black', label=r'lineare Regression')
+
+#output slope and intercept
+latex('m Freq without Red', slope, std_err, r'\tera\Hz', -15, 3)
+latex('n Freq without Red', intercept, result.intercept_stderr, '\V', 0, 3)
+
+#format plot
+plt.xlabel(r'$f$ / THz')
+plt.ylabel(r'$U_g$ / V')
+plt.xlim(450 * 10**12, 700 * 10**12)
+plt.ylim(0.2, 1.2)
+plt.legend(loc = 'upper left')
+
+#change xticks to 10**12
+plt.xticks([450 * 10**12, 500 * 10**12, 550 * 10**12, 600 * 10**12, 650 * 10**12, 700 * 10**12], ['450', '500', '550', '600', '650', '700'])
+
+#save plot
+plt.savefig('plots/frequenciesWithoutRed.pdf')
