@@ -230,6 +230,11 @@ plt.xticks([450 * 10**12, 500 * 10**12, 550 * 10**12, 600 * 10**12, 650 * 10**12
 #save plot
 plt.savefig('plots/frequencies.pdf')
 
+h = sp.constants.h/sp.constants.e
+print(std_err)
+p = ufloat(slope, std_err) / h
+print('p: ', p.n , p.s)
+
 plt.clf()
 
 #plot frequencies against U_g without red data point
@@ -257,3 +262,8 @@ plt.xticks([450 * 10**12, 500 * 10**12, 550 * 10**12, 600 * 10**12, 650 * 10**12
 
 #save plot
 plt.savefig('plots/frequenciesWithoutRed.pdf')
+
+h = sp.constants.h/sp.constants.e
+print(std_err)
+p_without_red = ufloat(slope, std_err) / h
+print('p_without_red: ', p_without_red)
